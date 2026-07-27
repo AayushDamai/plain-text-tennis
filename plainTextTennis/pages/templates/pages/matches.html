@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> Plain Text Tennis</title>
+
+</head>
+<body>
+    <h1> Tennis Matches</h1>
+
+    {% if error %}
+        <p style=" color: red;">Error with loading the matches {{ error }} </p>
+    {% elif matches %}
+        <ul>
+            {% for match in matches %}
+            <li>
+                <strong> {{match.player1.name}}</strong> <!-- strong tag literally just means this is important, in tennis-api, player1 is the winner sp this is bolded      -->
+                vs
+                {{ match.player2.name }}
+                {% if match.date %}
+                    - {{ match.date }}
+                {% else %}
+                    - date COMING SOON
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p> NO GAMES ??? OR UNLIMITED GAMES??? </p>
+    {% endif %}
+<!-- make sure it follows the proper format: {% whatever %} - the spacing matters here i did not know that until later so this caused a lot of headaches -->
+</body>
+</html>
